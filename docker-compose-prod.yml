@@ -1,16 +1,16 @@
 version: "3.8"
 services:
   nginx:
-    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${APPLICATION_NAME}-nginx
+    image: 215680092654.dkr.ecr.ap-south-1.amazonaws.com/nginx-server
     restart: always
     build:
       context: ./nginx
     ports:
       - "80:80"
   api:
-    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${APPLICATION_NAME}-api
+    image: 215680092654.dkr.ecr.ap-south-1.amazonaws.com/node-server
     build:
-        context: ./api
+      context: ./api
     volumes:
       - /app/node_modules
       - ./api:/app
@@ -19,7 +19,7 @@ services:
     ports:
       - "5000:5000"
   client:
-    image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${APPLICATION_NAME}-client
+    image: 215680092654.dkr.ecr.ap-south-1.amazonaws.com/react-app
     build:
       context: ./client
     volumes:
